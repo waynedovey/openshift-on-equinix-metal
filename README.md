@@ -48,10 +48,6 @@ cd openshift-on-equinix-metal
 
 ## Usage
 
-1. Follow [this](EQUINIX.md) to configure your Equinix Metal project and collect required parameters.
-
-1. Follow [this](CLOUDFLARE.md) to configure your Cloudflare account and collect required parameters.
-
 1. [Obtain an OpenShift Cluster Manager API Token](https://cloud.redhat.com/openshift/token) for pullSecret generation.
 
 1. Configure TF_VARs applicable to your Equinix Metal project, DNS settings, and OpenShift API Token:
@@ -72,8 +68,7 @@ cd openshift-on-equinix-metal
 
     ```bash
     terraform apply -target metal_spot_market_request.bastion -target metal_spot_market_request.master0
-    terraform apply -target metal_spot_market_request.bastion -target metal_spot_market_request.master0
- -target metal_spot_market_request.master1 -target metal_spot_market_request.master2
+    terraform apply -target metal_spot_market_request.bastion -target metal_spot_market_request.master0 -target metal_spot_market_request.master1 -target metal_spot_market_request.master2
     terraform apply
     ```
 ---
