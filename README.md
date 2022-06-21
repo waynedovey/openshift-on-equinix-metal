@@ -1,6 +1,6 @@
 # Openshift on Equinix Metal
 
-This collection of modules will deploy a bare metal [OpenShift] using the assisted installer 
+This collection of modules will deploy a bare metal OpenShift using the assisted installer.
 
 ## Install Terraform
 
