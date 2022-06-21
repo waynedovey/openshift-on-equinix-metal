@@ -9,8 +9,8 @@ Terraform is just a single binary. Visit their [download page](https://www.terra
 Here is an example for **macOS**:
 
 ```bash
-curl -LO https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_darwin_amd64.zip
-unzip terraform_0.14.7_darwin_amd64.zip
+curl -LO https://releases.hashicorp.com/terraform/1.2.3/terraform_1.2.3_darwin_amd64.zip
+unzip terraform_1.2.3_darwin_amd64.zip
 chmod +x terraform
 sudo mv terraform /usr/local/bin/
 ```
@@ -18,8 +18,8 @@ sudo mv terraform /usr/local/bin/
 Example for **Linux**:
 
 ```bash
-wget https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip
-unzip terraform_0.14.7_linux_amd64.zip
+wget https://releases.hashicorp.com/terraform/1.2.3/terraform_1.2.3_linux_amd64.zip
+unzip terraform_1.2.3_linux_amd64.zip
 sudo install terraform /usr/local/bin/
 ```
 
@@ -42,8 +42,8 @@ sudo install jq-linux64 /usr/local/bin/jq
 To download this project, run the following command:
 
 ```bash
-git clone https://github.com/equinix/terraform-metal-openshift-on-baremetal.git
-cd terraform-metal-openshift
+git clone https://github.com/waynedovey/openshift-on-equinix-metal.git
+cd openshift-on-equinix-metal
 ```
 
 ## Usage
@@ -57,13 +57,8 @@ cd terraform-metal-openshift
 1. Configure TF_VARs applicable to your Equinix Metal project, DNS settings, and OpenShift API Token:
 
     ```bash
-    export TF_VAR_project_id="kajs886-l59-8488-19910kj"
-    export TF_VAR_auth_token="lka6702KAmVAP8957Abny01051"
-
-    export TF_VAR_cluster_basedomain="domain.com"
-    export TF_VAR_ocp_cluster_manager_token="eyJhbGc...d8Agva"
-    export TF_VAR_dns_provider="cloudflare" # aws and linode are also supported
-    export TF_VAR_dns_options='{"email": "abc@xyz.com", "api_key": "...", "api_token": "..."}' # fields differ by DNS provider
+    export TF_VAR_project_id="CHANGEME"
+    export TF_VAR_auth_token="CHANGEME"
     ```
 
 1. Initialize and validate terraform:
@@ -81,5 +76,4 @@ cd terraform-metal-openshift
  -target metal_spot_market_request.master1 -target metal_spot_market_request.master2
     terraform apply
     ```
-
 ---
