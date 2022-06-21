@@ -1,0 +1,21 @@
+modprobe 8021q
+lsmod | grep 8021q
+cat /etc/modules-load.d/networking.conf
+echo "8021q" >> /etc/modules-load.d/networking.conf
+ip link add link bond0 name bond0.2000 type vlan id 2000
+ip addr add 10.60.60.100/24 brd 10.60.60.255 dev bond0.2000
+ip link set dev bond0.2000 up
+
+ip -d link show bond0.2000
+
+tar -xvf bundle.tar
+dnf install -y haproxy dhcp-server vim
+
+BONDIP=`cat /etc/sysconfig/network-scripts/ifcfg-bond0 | grep IPADDR | sed 's/IPADDR=//g'`
+
+sed -i 's/REPLACEME/'$BONDIP'/g' haproxy/haproxy.cfg 
+
+mv -f dhcpd/dhcpd.conf /etc/dhcp/dhcpd.conf
+mv -f haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg
+systemctl start dhcpd haproxy
+systemctl status dhcpd haproxy
